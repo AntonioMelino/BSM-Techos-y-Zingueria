@@ -1,0 +1,212 @@
+"use client";
+
+import type React from "react";
+
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Card, CardContent } from "@/components/ui/card";
+import { Phone, Mail, MapPin, Send } from "lucide-react";
+
+export function Contact() {
+  const [formData, setFormData] = useState({
+    nombre: "",
+    telefono: "",
+    mensaje: "",
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Create WhatsApp message
+    const message = `Hola! Me llamo ${formData.nombre}.%0A%0A${formData.mensaje}%0A%0AMi teléfono: ${formData.telefono}`;
+    const whatsappUrl = `https://wa.me/5491234567890?text=${message}`;
+
+    // Open WhatsApp
+    window.open(whatsappUrl, "_blank");
+
+    // Reset form
+    setFormData({ nombre: "", telefono: "", mensaje: "" });
+  };
+
+  const contactInfo = [
+    {
+      icon: Phone,
+      title: "Teléfono",
+      content: "+54 9 11 2345-6789",
+      link: "tel:+5491123456789",
+    },
+    {
+      icon: Mail,
+      title: "Email",
+      content: "info@techosbsm.com",
+      link: "mailto:info@techosbsm.com",
+    },
+    {
+      icon: MapPin,
+      title: "Ubicación",
+      content: "Buenos Aires, Argentina",
+      link: null,
+    },
+  ];
+
+  return (
+    <section id="contacto" className="py-20 md:py-32 bg-muted/30">
+      <div className="container mx-auto px-4">
+        <div className="max-w-3xl mx-auto text-center mb-16">
+          <span className="text-accent font-semibold text-sm uppercase tracking-wider">
+            Contacto
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 text-balance">
+            Solicita tu presupuesto sin compromiso sssaa
+          </h2>
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            Contáctanos y resolveremos todas tus dudas. Respuesta rápida
+            garantizada.
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
+          {/* Contact Form */}
+          <Card className="border-2">
+            <CardContent className="p-8">
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="space-y-2">
+                  <label htmlFor="nombre" className="text-sm font-medium">
+                    Nombre completo *
+                  </label>
+                  <Input
+                    id="nombre"
+                    placeholder="Juan Pérez"
+                    value={formData.nombre}
+                    onChange={(e) =>
+                      setFormData({ ...formData, nombre: e.target.value })
+                    }
+                    required
+                    className="h-12"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label htmlFor="telefono" className="text-sm font-medium">
+                    Teléfono *
+                  </label>
+                  <Input
+                    id="telefono"
+                    type="tel"
+                    placeholder="+54 9 11 2345-6789"
+                    value={formData.telefono}
+                    onChange={(e) =>
+                      setFormData({ ...formData, telefono: e.target.value })
+                    }
+                    required
+                    className="h-12"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label htmlFor="mensaje" className="text-sm font-medium">
+                    Mensaje *
+                  </label>
+                  <Textarea
+                    id="mensaje"
+                    placeholder="Cuéntanos sobre tu proyecto..."
+                    value={formData.mensaje}
+                    onChange={(e) =>
+                      setFormData({ ...formData, mensaje: e.target.value })
+                    }
+                    required
+                    rows={6}
+                    className="resize-none"
+                  />
+                </div>
+
+                <Button
+                  type="submit"
+                  className="w-full h-12 bg-accent hover:bg-accent/90 text-accent-foreground text-base font-semibold group"
+                >
+                  Enviar por WhatsApp
+                  <Send className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+
+                <p className="text-xs text-muted-foreground text-center">
+                  Al enviar, serás redirigido a WhatsApp para completar tu
+                  consulta
+                </p>
+              </form>
+            </CardContent>
+          </Card>
+
+          {/* Contact Info */}
+          <div className="space-y-6">
+            <div className="space-y-4">
+              <h3 className="text-2xl font-bold">Información de contacto</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Estamos disponibles para responder tus consultas. No dudes en
+                contactarnos por cualquier medio.
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              {contactInfo.map((info, index) => {
+                const Icon = info.icon;
+                const content = (
+                  <Card
+                    key={index}
+                    className="border-2 hover:border-accent/50 transition-colors"
+                  >
+                    <CardContent className="p-6">
+                      <div className="flex items-start gap-4">
+                        <div className="flex-shrink-0">
+                          <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center">
+                            <Icon className="h-6 w-6 text-accent" />
+                          </div>
+                        </div>
+                        <div>
+                          <p className="font-semibold mb-1">{info.title}</p>
+                          <p className="text-muted-foreground">
+                            {info.content}
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                );
+
+                return info.link ? (
+                  <a key={index} href={info.link} className="block">
+                    {content}
+                  </a>
+                ) : (
+                  content
+                );
+              })}
+            </div>
+
+            {/* CTA Box */}
+            <Card className="bg-accent text-accent-foreground border-0">
+              <CardContent className="p-6">
+                <h4 className="text-xl font-bold mb-2">Atención 24/7</h4>
+                <p className="text-sm opacity-90 mb-4">
+                  ¿Emergencia con tu techo? Contáctanos en cualquier momento
+                  para asistencia inmediata.
+                </p>
+                <Button
+                  asChild
+                  variant="secondary"
+                  className="w-full bg-background text-foreground hover:bg-background/90"
+                >
+                  <a href="tel:+5491123456789">
+                    <Phone className="mr-2 h-4 w-4" />
+                    Llamar Ahora
+                  </a>
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
