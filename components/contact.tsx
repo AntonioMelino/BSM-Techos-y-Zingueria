@@ -21,7 +21,7 @@ export function Contact() {
 
     // Create WhatsApp message
     const message = `Hola! Me llamo ${formData.nombre}.%0A%0A${formData.mensaje}%0A%0AMi teléfono: ${formData.telefono}`;
-    const whatsappUrl = `https://wa.me/5491234567890?text=${message}`;
+    const whatsappUrl = `https://wa.me/5491157748201?text=${message}`;
 
     // Open WhatsApp
     window.open(whatsappUrl, "_blank");
@@ -34,8 +34,8 @@ export function Contact() {
     {
       icon: Phone,
       title: "Teléfono",
-      content: "+54 9 11 2345-6789",
-      link: "tel:+5491123456789",
+      content: "+54 9 11-5774-8201",
+      link: "tel:+5491157748201",
     },
     {
       icon: Mail,
@@ -59,7 +59,7 @@ export function Contact() {
             Contacto
           </span>
           <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 text-balance">
-            Solicita tu presupuesto sin compromiso sssaa
+            Solicita tu presupuesto sin compromiso
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
             Contáctanos y resolveremos todas tus dudas. Respuesta rápida

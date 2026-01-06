@@ -1,43 +1,53 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { Menu, X } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export function Header() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navItems = [
     { href: "#servicios", label: "Servicios" },
     { href: "#galeria", label: "Galería" },
     { href: "#nosotros", label: "Nosotros" },
     { href: "#contacto", label: "Contacto" },
-  ]
+  ];
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-background/95 backdrop-blur-md shadow-md" : "bg-transparent"
+        isScrolled
+          ? "bg-background/95 backdrop-blur-md shadow-md"
+          : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           <Link href="/" className="flex items-center gap-3">
-            <Image src="/logo.png" alt="Techos BSM" width={120} height={60} className="h-12 w-auto" />
+            <Image
+              src="/Logo BSM Techos y Zingueria.jpeg"
+              alt="Techos BSM"
+              width={120}
+              height={60}
+              className="h-12 w-auto"
+            />
             <div className="flex flex-col leading-tight">
-              <span className="text-2xl font-bold text-primary">TECHOS</span>
-              <span className="text-xl font-bold text-accent">BSM</span>
+              <span className="text-2xl font-bold text-primary">BSM</span>
+              <span className="text-xl font-bold text-accent">
+                TECHOS Y ZINGUERÍA
+              </span>
             </div>
           </Link>
 
@@ -52,7 +62,10 @@ export function Header() {
                 {item.label}
               </Link>
             ))}
-            <Button asChild className="bg-accent hover:bg-accent/90 text-accent-foreground">
+            <Button
+              asChild
+              className="bg-accent hover:bg-accent/90 text-accent-foreground"
+            >
               <Link href="#contacto">Solicitar Presupuesto</Link>
             </Button>
           </nav>
@@ -84,7 +97,10 @@ export function Header() {
                 {item.label}
               </Link>
             ))}
-            <Button asChild className="w-full bg-accent hover:bg-accent/90 text-accent-foreground">
+            <Button
+              asChild
+              className="w-full bg-accent hover:bg-accent/90 text-accent-foreground"
+            >
               <Link href="#contacto" onClick={() => setIsMobileMenuOpen(false)}>
                 Solicitar Presupuesto
               </Link>
@@ -93,5 +109,5 @@ export function Header() {
         )}
       </div>
     </header>
-  )
+  );
 }
