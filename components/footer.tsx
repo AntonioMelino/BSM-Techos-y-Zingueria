@@ -1,11 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Facebook, Instagram } from "lucide-react";
+import { Facebook, Instagram, MessageCircle } from "lucide-react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const whatsappNumber = "+5491157748201"; // Número sin espacios ni caracteres especiales para el enlace
+  const formattedWhatsappNumber = "+54 9 11 5774-8201"; // Número formateado para mostrar
 
   const socialLinks = [
+    {
+      icon: MessageCircle,
+      href: `https://wa.me/${whatsappNumber}`,
+      label: "WhatsApp",
+    },
     {
       icon: Facebook,
       href: "https://www.facebook.com/techosbsm/",
@@ -58,6 +65,8 @@ export function Footer() {
                     key={index}
                     href={social.href}
                     aria-label={social.label}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="w-10 h-10 rounded-lg bg-primary-foreground/10 hover:bg-accent flex items-center justify-center transition-colors"
                   >
                     <Icon className="h-5 w-5" />
@@ -101,18 +110,12 @@ export function Footer() {
             <ul className="space-y-2 text-sm opacity-80">
               <li>
                 <a
-                  href="tel:+5491157748201"
+                  href={`https://wa.me/${whatsappNumber}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="hover:text-accent transition-colors"
                 >
-                  +54 9 11 5774-8201
-                </a>
-              </li>
-              <li>
-                <a
-                  href="mailto:info@techosbsm.com"
-                  className="hover:text-accent transition-colors"
-                >
-                  info@techosbsm.com
+                  {formattedWhatsappNumber}
                 </a>
               </li>
               <li>Buenos Aires, Argentina</li>
