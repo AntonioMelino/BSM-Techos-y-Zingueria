@@ -7,7 +7,15 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
-import { Phone, Mail, MapPin, Send } from "lucide-react";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Send,
+  MessageCircle,
+  Instagram,
+  Facebook,
+} from "lucide-react";
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -32,22 +40,32 @@ export function Contact() {
 
   const contactInfo = [
     {
-      icon: Phone,
-      title: "Teléfono",
+      icon: MessageCircle,
+      title: "WhatsApp",
       content: "+54 9 11-5774-8201",
-      link: "tel:+5491157748201",
+      link: "https://wa.me/5491157748201",
+      description: "Respondemos al instante",
     },
     {
-      icon: Mail,
-      title: "Email",
-      content: "info@techosbsm.com",
-      link: "mailto:info@techosbsm.com",
+      icon: Instagram,
+      title: "Instagram",
+      content: "@techosbsm",
+      link: "https://instagram.com/techosbsm",
+      description: "Síguenos y mira nuestro trabajo",
+    },
+    {
+      icon: Facebook,
+      title: "Facebook",
+      content: "/techosbsm",
+      link: "https://facebook.com/techosbsm",
+      description: "Conéctate con nosotros",
     },
     {
       icon: MapPin,
       title: "Ubicación",
       content: "Buenos Aires, Argentina",
       link: null,
+      description: "Servicio en toda la zona",
     },
   ];
 
@@ -143,8 +161,8 @@ export function Contact() {
             <div className="space-y-4">
               <h3 className="text-2xl font-bold">Información de contacto</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Estamos disponibles para responder tus consultas. No dudes en
-                contactarnos por cualquier medio.
+                Estamos disponibles para responder tus consultas. Síguenos en
+                redes sociales o escríbenos directamente por WhatsApp.
               </p>
             </div>
 
@@ -163,11 +181,16 @@ export function Contact() {
                             <Icon className="h-6 w-6 text-accent" />
                           </div>
                         </div>
-                        <div>
+                        <div className="flex-1 min-w-0">
                           <p className="font-semibold mb-1">{info.title}</p>
-                          <p className="text-muted-foreground">
+                          <p className="text-muted-foreground font-medium">
                             {info.content}
                           </p>
+                          {info.description && (
+                            <p className="text-sm text-muted-foreground mt-1">
+                              {info.description}
+                            </p>
+                          )}
                         </div>
                       </div>
                     </CardContent>
@@ -175,7 +198,13 @@ export function Contact() {
                 );
 
                 return info.link ? (
-                  <a key={index} href={info.link} className="block">
+                  <a
+                    key={index}
+                    href={info.link}
+                    className="block"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     {content}
                   </a>
                 ) : (
@@ -197,9 +226,9 @@ export function Contact() {
                   variant="secondary"
                   className="w-full bg-background text-foreground hover:bg-background/90"
                 >
-                  <a href="tel:+5491123456789">
-                    <Phone className="mr-2 h-4 w-4" />
-                    Llamar Ahora
+                  <a href="https://wa.me/5491157748201">
+                    <MessageCircle className="mr-2 h-4 w-4" />
+                    Contactar por WhatsApp
                   </a>
                 </Button>
               </CardContent>
