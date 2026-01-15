@@ -87,76 +87,100 @@ export function Contact() {
 
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
           {/* Contact Form */}
-          <Card className="border-2">
-            <CardContent className="p-8">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="space-y-2">
-                  <label htmlFor="nombre" className="text-sm font-medium">
-                    Nombre completo *
-                  </label>
-                  <Input
-                    id="nombre"
-                    placeholder="Juan Pérez"
-                    value={formData.nombre}
-                    onChange={(e) =>
-                      setFormData({ ...formData, nombre: e.target.value })
-                    }
-                    required
-                    className="h-12"
-                  />
-                </div>
+          <div className="space-y-8">
+            {/* Form Card */}
+            <Card className="border-2">
+              <CardContent className="p-8">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="space-y-2">
+                    <label htmlFor="nombre" className="text-sm font-medium">
+                      Nombre completo *
+                    </label>
+                    <Input
+                      id="nombre"
+                      placeholder="Juan Pérez"
+                      value={formData.nombre}
+                      onChange={(e) =>
+                        setFormData({ ...formData, nombre: e.target.value })
+                      }
+                      required
+                      className="h-12"
+                    />
+                  </div>
 
-                <div className="space-y-2">
-                  <label htmlFor="telefono" className="text-sm font-medium">
-                    Teléfono *
-                  </label>
-                  <Input
-                    id="telefono"
-                    type="tel"
-                    placeholder="+54 9 11 2345-6789"
-                    value={formData.telefono}
-                    onChange={(e) =>
-                      setFormData({ ...formData, telefono: e.target.value })
-                    }
-                    required
-                    className="h-12"
-                  />
-                </div>
+                  <div className="space-y-2">
+                    <label htmlFor="telefono" className="text-sm font-medium">
+                      Teléfono *
+                    </label>
+                    <Input
+                      id="telefono"
+                      type="tel"
+                      placeholder="+54 9 11 2345-6789"
+                      value={formData.telefono}
+                      onChange={(e) =>
+                        setFormData({ ...formData, telefono: e.target.value })
+                      }
+                      required
+                      className="h-12"
+                    />
+                  </div>
 
-                <div className="space-y-2">
-                  <label htmlFor="mensaje" className="text-sm font-medium">
-                    Mensaje *
-                  </label>
-                  <Textarea
-                    id="mensaje"
-                    placeholder="Cuéntanos sobre tu proyecto..."
-                    value={formData.mensaje}
-                    onChange={(e) =>
-                      setFormData({ ...formData, mensaje: e.target.value })
-                    }
-                    required
-                    rows={6}
-                    className="resize-none"
-                  />
-                </div>
+                  <div className="space-y-2">
+                    <label htmlFor="mensaje" className="text-sm font-medium">
+                      Mensaje *
+                    </label>
+                    <Textarea
+                      id="mensaje"
+                      placeholder="Cuéntanos sobre tu proyecto..."
+                      value={formData.mensaje}
+                      onChange={(e) =>
+                        setFormData({ ...formData, mensaje: e.target.value })
+                      }
+                      required
+                      rows={6}
+                      className="resize-none"
+                    />
+                  </div>
 
-                <Button
-                  type="submit"
-                  className="w-full h-12 bg-accent hover:bg-accent/90 text-accent-foreground text-base font-semibold group"
-                >
-                  Enviar por WhatsApp
-                  <Send className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </Button>
+                  <Button
+                    type="submit"
+                    className="w-full h-12 bg-accent hover:bg-accent/90 text-accent-foreground text-base font-semibold group"
+                  >
+                    Enviar por WhatsApp
+                    <Send className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  </Button>
 
-                <p className="text-xs text-muted-foreground text-center">
-                  Al enviar, serás redirigido a WhatsApp para completar tu
-                  consulta
+                  <p className="text-xs text-muted-foreground text-center">
+                    Al enviar, serás redirigido a WhatsApp para completar tu
+                    consulta
+                  </p>
+                </form>
+              </CardContent>
+            </Card>
+
+            {/* CTA Box moved below form */}
+            <Card className="bg-accent text-accent-foreground border-0">
+              <CardContent className="p-6">
+                <h4 className="text-xl font-bold mb-2">Atención 24/7</h4>
+                <p className="text-sm opacity-90 mb-4">
+                  ¿Emergencia con tu techo? Contáctanos en cualquier momento
+                  para asistencia inmediata.
                 </p>
-              </form>
-            </CardContent>
-          </Card>
+                <Button
+                  asChild
+                  variant="secondary"
+                  className="w-full bg-background text-foreground hover:bg-background/90"
+                >
+                  <a href="https://wa.me/5491157748201">
+                    <MessageCircle className="mr-2 h-4 w-4" />
+                    Contactar por WhatsApp
+                  </a>
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
 
-          {/* Contact Info */}
+          {/* Contact Info - Right column remains unchanged */}
           <div className="space-y-6">
             <div className="space-y-4">
               <h3 className="text-2xl font-bold">Información de contacto</h3>
@@ -212,27 +236,6 @@ export function Contact() {
                 );
               })}
             </div>
-
-            {/* CTA Box */}
-            <Card className="bg-accent text-accent-foreground border-0">
-              <CardContent className="p-6">
-                <h4 className="text-xl font-bold mb-2">Atención 24/7</h4>
-                <p className="text-sm opacity-90 mb-4">
-                  ¿Emergencia con tu techo? Contáctanos en cualquier momento
-                  para asistencia inmediata.
-                </p>
-                <Button
-                  asChild
-                  variant="secondary"
-                  className="w-full bg-background text-foreground hover:bg-background/90"
-                >
-                  <a href="https://wa.me/5491157748201">
-                    <MessageCircle className="mr-2 h-4 w-4" />
-                    Contactar por WhatsApp
-                  </a>
-                </Button>
-              </CardContent>
-            </Card>
           </div>
         </div>
       </div>
