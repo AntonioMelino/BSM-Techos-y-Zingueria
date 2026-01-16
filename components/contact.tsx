@@ -161,10 +161,12 @@ export function Contact() {
             {/* CTA Box moved below form */}
             <Card className="bg-accent text-accent-foreground border-0">
               <CardContent className="p-6">
-                <h4 className="text-xl font-bold mb-2">Atención 24/7</h4>
+                <h4 className="text-xl font-bold mb-2">
+                  Atención personalizada
+                </h4>
                 <p className="text-sm opacity-90 mb-4">
-                  ¿Emergencia con tu techo? Contáctanos en cualquier momento
-                  para asistencia inmediata.
+                  ¿Emergencia con tu techo? Contáctanos para asistencia
+                  inmediata.
                 </p>
                 <Button
                   asChild
