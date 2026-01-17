@@ -131,7 +131,7 @@ export function Contact() {
                     </label>
                     <Textarea
                       id="mensaje"
-                      placeholder="Cuéntanos sobre tu proyecto..."
+                      placeholder="Contanos sobre tu problema..."
                       value={formData.mensaje}
                       onChange={(e) =>
                         setFormData({ ...formData, mensaje: e.target.value })

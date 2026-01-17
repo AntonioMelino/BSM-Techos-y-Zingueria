@@ -1,6 +1,6 @@
-import { Button } from "@/components/ui/button"
-import { ArrowRight, Shield, Clock, Award } from "lucide-react"
-import Link from "next/link"
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Shield, Clock, Award } from "lucide-react";
+import Link from "next/link";
 
 export function Hero() {
   return (
@@ -28,18 +28,28 @@ export function Hero() {
             </h1>
 
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl">
-              Expertos en instalación, reparación e impermeabilización de techos. Calidad garantizada y atención
-              personalizada para cada proyecto.
+              Expertos en instalación, reparación e impermeabilización de
+              techos. Calidad garantizada y atención personalizada para cada
+              proyecto.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground text-base group">
+              <Button
+                asChild
+                size="lg"
+                className="bg-accent hover:bg-accent/90 text-accent-foreground text-base group"
+              >
                 <Link href="#contacto">
-                  Solicitar Presupuesto Gratis
+                  Solicitar Presupuesto
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="text-base bg-transparent">
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="text-base bg-transparent"
+              >
                 <Link href="#galeria">Ver Trabajos Realizados</Link>
               </Button>
             </div>
@@ -89,5 +99,5 @@ export function Hero() {
         </div>
       </div>
     </section>
-  )
+  );
 }
